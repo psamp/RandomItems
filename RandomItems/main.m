@@ -7,11 +7,26 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Item.h"
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        // insert code here...
-        NSLog(@"Hello, World!");
+        NSMutableArray *items = [NSMutableArray array];
+        
+        Item *one = [Item randomItem];
+        [items addObject:one];
+        
+        Item *two = [Item randomItem];
+        [items addObject:two];
+        
+        one.containedItem = two;
+        
+        for (Item *item in items) {
+            NSLog(@"%@", item);
+        }
+        
+        items = nil;
+        
     }
     return 0;
 }
